@@ -36,6 +36,9 @@ class Connection
      */
     private $connection;
 
+    /**
+     * Connection constructor.
+     */
     public function __construct()
     {
         $config=require_once __DIR__.'/../../common/config/config.php';
@@ -50,6 +53,9 @@ class Connection
         $this->connection();
     }
 
+    /**
+     * Connection connection
+     */
     private function connection()
     {
         try {
