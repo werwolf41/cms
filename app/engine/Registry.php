@@ -11,6 +11,9 @@ namespace app\engine;
 
 class Registry
 {
+    /**
+     * @var array
+     */
     private $registry = [];
 
     /**
