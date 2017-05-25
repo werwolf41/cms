@@ -7,13 +7,13 @@
             "app\\database\\":"app/database/",
             "app\\engine\\":"app//engine/",
             "app\\lib\\":"app/lib/",
-            "backend\\controllers":"backend/controllers/",
-            "backend\\models":"backend/models/",
-            "backend\\view":"backend/view/",
-            "frontend\\controllers":"frontend/controllers/",
-            "frontend\\models":"frontend/models/",
-            "frontend\\view":"frontend/view/",
-            "common\\models":"common/models/"
+            "backend\\controllers\\":"backend/controllers/",
+            "backend\\models\\":"backend/models/",
+            "backend\\view\\":"backend/view/",
+            "frontend\\controllers\\":"frontend/controllers/",
+            "frontend\\models\\":"frontend/models/",
+            "frontend\\view\\":"frontend/view/",
+            "common\\models\\":"common/models/"
         }
     }
 }
