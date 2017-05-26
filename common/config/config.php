@@ -5,7 +5,7 @@ return [
         'host'=>'localhost',
         'db_name'=>'cms',
         'user'=>'root',
-        'password'=>'root',
+        'password'=>'',
         'charset'=>'utf8'
     ]
 ];

@@ -67,6 +67,10 @@ class Route
 
             }
         }
+        if(empty($this->controller)){
+            $this->controller = '\\app\\lib\\Error';
+            $this->action = "error404";
+        }
         $this->redirect();
     }
 
