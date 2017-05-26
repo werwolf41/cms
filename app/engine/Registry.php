@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: krasn
- * Date: 25.05.2017
- * Time: 15:23
- */
 
 namespace app\engine;
 
