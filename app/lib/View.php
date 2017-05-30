@@ -33,10 +33,19 @@ class View
         $config = $this->registry->getRegistry('config');
         $this->layout = $layout ?: $config['templates']['layout'];
         $this->templateDir = $templateDir ?: $config['templates']['vievs'];
-        $this->view = $view ?: $this->registry->getRegistry('action');
+        $route = $this->registry->getRegistry('route');
+        $this->templateDir.='/'.$route['controller'];
+        $this->view = $view ?: $route['action'];
     }
 
-    public function render(){
-
+    public function render()
+    {
+        $web = $this->registry->getRegistry('config');
+        $template = WEBDIR . '/views/'.$this->templateDir.'/'.$this->view.'.php';
+        if (file_exists($template)){
+            include $template;
+        } else {
+            echo "Файл шаблона {$template} не найден";
+        }
     }
 }

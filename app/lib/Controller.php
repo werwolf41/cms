@@ -38,6 +38,6 @@ abstract Class Controller
 
 	public function view(){
 		$vObj = new View($this->registry, $this->view, $this->layout, $this->templateDir);
-		debug($vObj);
+		$vObj->render();
 	}
 }

@@ -99,7 +99,7 @@ class Route
             if (class_exists($controller)){
                 $cObg = new $controller ($this->regestry);
                 $action = $this->route['action'].'Action';
-                $this->regestry->setRegistry('action', $this->route['action']);
+                $this->regestry->setRegistry('route', $this->route);
                 if (method_exists($cObg, $action)){
                     $cObg->$action();
                     $cObg->view();
