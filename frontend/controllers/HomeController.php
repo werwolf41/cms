@@ -12,14 +12,12 @@ class HomeController extends Controller
 
     public function indexAction()
     {
-        echo 'Home controller';
+        $this->testAction();
     }
 
-    public function testAction($args=[])
+    public function testAction()
     {
-        echo 'Home controller, test function';
-        foreach ($args as $key => $value){
-            echo '<br/>'.$key.' = '.$value;
-        }
+        $title = 'Home controller, test function';
+        $this->view('index', compact('title'));
     }
 }

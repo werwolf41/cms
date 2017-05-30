@@ -12,11 +12,6 @@ abstract Class Controller
 	protected $registry = '';
 
 	/**
-	* @var array
-	*/
-	protected $data = [];
-
-	/**
 	* @var string
 	*/
 	protected $layout = '';
@@ -36,8 +31,8 @@ abstract Class Controller
 		$this->registry = $registry;
 	}
 
-	public function view(){
-		$vObj = new View($this->registry, $this->view, $this->layout, $this->templateDir);
-		$vObj->render();
+	public function view($view, $data=[]){
+		$vObj = new View($this->registry, $this->layout, $this->templateDir);
+		$vObj->render($view, $data);
 	}
 }

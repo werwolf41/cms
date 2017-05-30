@@ -102,7 +102,6 @@ class Route
                 $this->regestry->setRegistry('route', $this->route);
                 if (method_exists($cObg, $action)){
                     $cObg->$action();
-                    $cObg->view();
                 }else{
                     http_response_code(404);
                     echo '404 error <br>';
