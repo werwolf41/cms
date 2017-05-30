@@ -29,3 +29,5 @@ define('WEB', '\\'.$config['web']);
 //route
 $route  = new Route($registry);
 $route->dispache($url);
+
+$registry;

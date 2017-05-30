@@ -4,8 +4,9 @@ namespace frontend\controllers;
 
 
 use app\engine\Registry;
+use app\lib\Controller;
 
-class HomeController
+class HomeController extends Controller
 {
 
 

@@ -5,8 +5,8 @@ return [
         '^/$'=> ['controller'=>'home', 'action='>'index'],
         '^/(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$'=>''
     ],
-    'vievs'=>[
-        'themes'=>'default',
+    'templates'=>[
+        'vievs'=>'default',
         'layout'=>'default',
     ]
 ];

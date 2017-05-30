@@ -24,14 +24,20 @@ abstract Class Controller
 	/**
 	* @var string
 	*/
-	protected $template = '';
+	protected $view = '';
+
+    /**
+     * @var string
+     */
+    protected $templateDir='';
 
 	public function __construct(Registry $registry)
 	{
 		$this->registry = $registry;
 	}
 
-	protected function render(){
-		
+	public function view(){
+		$vObj = new View($this->registry, $this->view, $this->layout, $this->templateDir);
+		debug($vObj);
 	}
 }
