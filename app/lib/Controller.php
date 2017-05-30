@@ -26,10 +26,10 @@ abstract Class Controller
 	*/
 	protected $template = '';
 
-	public function __construct(Registry $registry)
-	{
-		$this->registry = $registry;
-	}
+//	public function __construct(Registry $registry)
+//	{
+//		$this->registry = $registry;
+//	}
 
 	protected function render(){
 		

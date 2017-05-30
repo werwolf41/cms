@@ -5,87 +5,114 @@ namespace app\engine;
 class Route
 {
     /**
-     * @var className
-     */
-    private $controller;
-    /**
-     * @var function
-     */
-    private $action;
-    /**
+     * таблица маршрутов
      * @var array
      */
-    private $args=[];
+    private static $routes = [];
 
     /**
-     * @var string
+     * текущий маршрут
+     * @var array
      */
-    private $app = '';
+    private static $route = [];
 
     /**
-     * @var Registry
+     * добавляет маршрут в таблицу маршрутов
+     *
+     * @param string $regexp регулярное выражение маршрута
+     * @param array $route маршрут ([controller, action, params])
      */
-    private  $registry;
-
-    public function __construct(Registry $registry)
+    public static function setRouters ($regexp, $route=[])
     {
-        $this->registry = $registry;
-        $config = $this->registry->getRegistry(config);
-        $this->app = $config['app'];
+        self::$routes[$regexp]=$route;
+    }
 
-        $url = $_SERVER['REQUEST_URI'];
-        $position = strpos($url, '?');
-        if($position) {
-            $url = substr($url, 0, $position);
-            $this->setArgs();
-        }
-        if($url == '/'){
-            $this->controller = '\\'.$this->app.'\\'.'controllers\\Home';
-            $this->action = 'index';
-        }else{
-            $url = substr($url, 1);
-            $urlparts = explode('/', $url);
-            $pach = __Dir__.'/../../'.$this->app.'/controllers/';
-            $controller = '\\'.$this->app.'\\controllers\\' ;
-            foreach ($urlparts as $part){
-                if(empty($this->controller) && is_file($pach.lcfirst($part).'.php'))
-                {
-                    $this->controller = $controller.lcfirst($part);
-                    continue;
-                }
-                else if(empty($this->controller) && !is_file($pach.lcfirst($part).'.php'))
-                {
-                    $pach .= $part . '/';
-                    $controller .= $part . '\\';
-                    continue;
-                }
-                elseif(!empty($this->controller))
-                {
-                    $this->action = $part;
-                    break;
-                }
+    /**
+     * возвращает таблицу маршрутов
+     *
+     * @return array
+     */
+    public static function getRoutes()
+    {
+        return self::$routes;
+    }
 
+    /**
+     * возвращает текущий маршрут (controller, action, [params])
+     *
+     * @return array
+     */
+    public static function getRote()
+    {
+        return self::$route;
+    }
+
+    /**
+     * ищет URL в таблице маршрутов
+     * @param string $url входящий URL
+     * @return bool
+     */
+    public static function machRote($url)
+    {
+        foreach (self::$routes as $patern => $route){
+            if (preg_match("#$patern#i", $url, $maches)){
+                foreach ($maches as $k => $v){
+                    if (is_string($k)){
+                        $route[$k] = $v;
+                    }
+                }
+                if(!(isset($route['action']))){
+                    $route['action'] = 'index';
+                }
+                $route['controller'] = self::upperCamelCase($route['controller']);
+                self::$route = $route;
+                return true;
             }
         }
-        if(empty($this->controller)){
-            $this->controller = '\\app\\lib\\Error';
-            $this->action = "error404";
+        return false;
+    }
+
+    public static function dispache($url){
+        $url = self::removeGetParams($url);
+        if (self::machRote($url)){
+            $controller = WEB .'\\controllers\\'. self::$route['controller'].'Controller';
+
+            if (class_exists($controller)){
+                $cObg = new $controller;
+                $action = self::$route['action'].'Action';
+                if (method_exists($cObg, $action)){
+                    $cObg->$action();
+                }else{
+                    http_response_code(404);
+                    echo '404 error <br>';
+                    echo "Метод <b>$controller::$action</b> не найден";
+                }
+            }else{
+                http_response_code(404);
+                echo '404 error <br>';
+                echo "Контроллер <b>$controller</b> не найден";
+            }
+        }else{
+            http_response_code(404);
+            echo '404';
         }
-        $this->redirect();
     }
 
-    private function setArgs(){
-        $args = explode('&',$_SERVER['QUERY_STRING']);
-        foreach ($args as $value){
-            $ar = explode('=', $value);
-            $this->args[$ar[0]] = $ar[1];
+    public static function upperCamelCase($name){
+        $name = str_replace('-', ' ', $name);
+        $name = ucwords($name);
+        $name = str_replace(' ', '', $name);
+        return $name;
+    }
+
+    private static function removeGetParams($url){
+        if ($url){
+            $params = explode('&', $url, 2);
+            if(false === strpos($params[0], '=')){
+                return $params[0];
+            } else {
+              return '/';
+            }
         }
     }
-
-    public function redirect(){
-       $controller =  new $this->controller ($this->registry);
-       $action = $this->action;
-       $controller->$action($this->args);
-    }
-
 }

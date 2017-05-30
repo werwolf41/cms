@@ -1,4 +1,4 @@
 <?php
 return [
-    'app'=>'frontend',
+    'web'=>'frontend',
 ];

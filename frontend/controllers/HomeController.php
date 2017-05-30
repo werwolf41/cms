@@ -5,18 +5,16 @@ namespace frontend\controllers;
 
 use app\engine\Registry;
 
-class Home
+class HomeController
 {
-    public function __construct(Registry $registry)
-    {
-    }
 
-    public function index()
+
+    public function indexAction()
     {
         echo 'Home controller';
     }
 
-    public function test($args=[])
+    public function testAction($args=[])
     {
         echo 'Home controller, test function';
         foreach ($args as $key => $value){
