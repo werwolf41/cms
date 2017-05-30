@@ -5,16 +5,35 @@ namespace app\engine;
 class Route
 {
     /**
+     * @var Registry
+     */
+    private $regestry;
+    /**
      * таблица маршрутов
      * @var array
      */
-    private static $routes = [];
+    private  $routes = [];
 
     /**
      * текущий маршрут
      * @var array
      */
-    private static $route = [];
+    private  $route = [];
+
+    public function __construct($registry)
+    {
+        $this->regestry = $registry;
+
+        $config = $this->regestry->getRegistry('config');
+
+        foreach ($config['routes'] as $k => $v){
+            if (is_array($v)){
+               $this->setRouters($k, $v);
+            }else{
+                $this->setRouters($k);
+            }
+        }
+    }
 
     /**
      * добавляет маршрут в таблицу маршрутов
@@ -22,9 +41,9 @@ class Route
      * @param string $regexp регулярное выражение маршрута
      * @param array $route маршрут ([controller, action, params])
      */
-    public static function setRouters ($regexp, $route=[])
+    public  function setRouters ($regexp, $route=[])
     {
-        self::$routes[$regexp]=$route;
+        $this->routes[$regexp]=$route;
     }
 
     /**
@@ -32,9 +51,9 @@ class Route
      *
      * @return array
      */
-    public static function getRoutes()
+    public  function getRoutes()
     {
-        return self::$routes;
+        return $this->routes;
     }
 
     /**
@@ -42,9 +61,9 @@ class Route
      *
      * @return array
      */
-    public static function getRote()
+    public  function getRote()
     {
-        return self::$route;
+        return $this->route;
     }
 
     /**
@@ -52,9 +71,9 @@ class Route
      * @param string $url входящий URL
      * @return bool
      */
-    public static function machRote($url)
+    public  function machRote($url)
     {
-        foreach (self::$routes as $patern => $route){
+        foreach ($this->routes as $patern => $route){
             if (preg_match("#$patern#i", $url, $maches)){
                 foreach ($maches as $k => $v){
                     if (is_string($k)){
@@ -64,22 +83,22 @@ class Route
                 if(!(isset($route['action']))){
                     $route['action'] = 'index';
                 }
-                $route['controller'] = self::upperCamelCase($route['controller']);
-                self::$route = $route;
+                $route['controller'] = $this->upperCamelCase($route['controller']);
+                $this->route = $route;
                 return true;
             }
         }
         return false;
     }
 
-    public static function dispache($url){
-        $url = self::removeGetParams($url);
-        if (self::machRote($url)){
-            $controller = WEB .'\\controllers\\'. self::$route['controller'].'Controller';
+    public  function dispache($url){
+        $url = $this->removeGetParams($url);
+        if ($this->machRote($url)){
+            $controller = WEB .'\\controllers\\'. $this->route['controller'].'Controller';
 
             if (class_exists($controller)){
-                $cObg = new $controller;
-                $action = self::$route['action'].'Action';
+                $cObg = new $controller ($this->regestry);
+                $action = $this->route['action'].'Action';
                 if (method_exists($cObg, $action)){
                     $cObg->$action();
                 }else{
@@ -98,20 +117,20 @@ class Route
         }
     }
 
-    public static function upperCamelCase($name){
+    public  function upperCamelCase($name){
         $name = str_replace('-', ' ', $name);
         $name = ucwords($name);
         $name = str_replace(' ', '', $name);
         return $name;
     }
 
-    private static function removeGetParams($url){
+    private  function removeGetParams($url){
         if ($url){
             $params = explode('&', $url, 2);
             if(false === strpos($params[0], '=')){
                 return $params[0];
             } else {
-              return '/';
+                return '/';
             }
         }
     }

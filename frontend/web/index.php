@@ -27,7 +27,5 @@ $registry->setRegistry('config', $config);
 define('WEB', '\\'.$config['web']);
 
 //route
-Route::setRouters('^/$', ['controller'=>'home', 'action='>'index']);
-Route::setRouters('^/(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');
-
-Route::dispache($url);
+$route  = new Route($registry);
+$route->dispache($url);
