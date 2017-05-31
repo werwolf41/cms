@@ -9,6 +9,7 @@ use app\engine\Route;
 define('WEBDIR', dirname(__DIR__));
 define('APP', dirname(dirname(__DIR__)).'/app');
 define('COMMON', dirname(dirname(__DIR__)).'/common');
+define('VENDOR', dirname(dirname(__DIR__)).'/vendor');
 
 //tmp
 require __DIR__."/../../app/lib/functions.php";

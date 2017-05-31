@@ -33,8 +33,8 @@ class View
     public function render($view, $data=[])
     {
         $route = $this->registry->getRegistry('route');
-        $template = WEBDIR . '/views/' . $this->templateDir . '/' . $route['controller'] . '/' . $view . '.php';
-        $layout = WEBDIR . '/views/' . $this->templateDir . '/' . $this->layout . '.php';
+        $template = WEBDIR."/views/{$this->templateDir}/{$route['controller']}/{$view}.php";
+        $layout = WEBDIR . "/views/{$this->templateDir}/{$this->layout}.php";
 
         if (file_exists($template) && file_exists($layout)){
             extract($data);
