@@ -1,3 +1,4 @@
 .idea/
 vendor/
-frontend/web/assets
+web/assets
+!vendor/core
