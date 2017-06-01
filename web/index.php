@@ -4,9 +4,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
 use core\Route;
+define('ROOT_FOLDER', dirname(__DIR__));
+define('APP',  ROOT_FOLDER. '/app');
+define('CONFIG', ROOT_FOLDER . '/config');
 
-define('APP', dirname(__DIR__) . '/app');
-define('ROOT_FOLDER', __DIR__.'/..');
 
 $url = $_SERVER['REQUEST_URI'];
 
@@ -15,7 +16,7 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 
 //route
-$routes = require_once __DIR__ . '/../config/routes.php';
+$routes = require_once CONFIG . '/routes.php';
 if ($routes){
     foreach ($routes as $regexp => $route){
         Route::setRouters($regexp, $route);

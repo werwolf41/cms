@@ -9,7 +9,8 @@
             "core\\":"vendor/core/",
             "core\\lib\\":"vendor/core/lib/",
             "core\\helpers\\":"vendor/core/helpers/",
-            "app\\controllers\\":"app/controllers/"
+            "app\\controllers\\":"app/controllers/",
+            "app\\models\\":"app/models/"
         }
     },
     "extra": {

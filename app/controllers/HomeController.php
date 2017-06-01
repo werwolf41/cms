@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Home;
 
 class HomeController extends App
 {
@@ -9,7 +10,10 @@ class HomeController extends App
 
     public function indexAction()
     {
-        $this->testAction();
+        $model = new Home();
+        $departaments = $model->findOne(2);
+        $title = 'Home controller, test function';
+        $this->view('index', compact('title', 'departaments'));
     }
 
     public function testAction()
