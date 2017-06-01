@@ -22,6 +22,12 @@ class View
      */
     private $templateDir='';
 
+    /**
+     * View constructor.
+     * @param Registry $registry
+     * @param string $layout
+     * @param string $templateDir
+     */
     public function __construct(Registry $registry, $layout='', $templateDir='')
     {
         $this->registry = $registry;
@@ -30,6 +36,11 @@ class View
         $this->templateDir = $templateDir ?: $config['templates']['vievs'];
     }
 
+    /**
+     * вывод шаблона
+     * @param $view
+     * @param array $data
+     */
     public function render($view, $data=[])
     {
         $route = $this->registry->getRegistry('route');
@@ -49,6 +60,7 @@ class View
             include $layout;
 
         } else {
+//            TODO Вывод ошибки
             echo "Файл шаблона {$template} или {$layout} не найден";
         }
     }

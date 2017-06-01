@@ -3,10 +3,7 @@
 namespace frontend\controllers;
 
 
-use app\engine\Registry;
-use app\lib\Controller;
-
-class HomeController extends Controller
+class HomeController extends App
 {
 
 

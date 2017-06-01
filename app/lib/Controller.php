@@ -26,11 +26,20 @@ abstract Class Controller
      */
     protected $templateDir='';
 
+    /**
+     * Controller constructor.
+     * @param Registry $registry
+     */
 	public function __construct(Registry $registry)
 	{
 		$this->registry = $registry;
 	}
 
+    /**
+     * вызывает метод view класса View
+     * @param $view
+     * @param array $data
+     */
 	public function view($view, $data=[]){
 		$vObj = new View($this->registry, $this->layout, $this->templateDir);
 		$vObj->render($view, $data);

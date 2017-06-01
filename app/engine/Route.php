@@ -83,6 +83,9 @@ class Route
                 if(!(isset($route['action']))){
                     $route['action'] = 'index';
                 }
+                if (isset($route['module'])){
+                    $route['module'] = $this->upperCamelCase($route['module']);
+                }
                 $route['controller'] = $this->upperCamelCase($route['controller']);
                 $this->route = $route;
                 return true;
@@ -94,7 +97,12 @@ class Route
     public  function dispache($url){
         $url = $this->removeGetParams($url);
         if ($this->machRote($url)){
-            $controller = WEB .'\\controllers\\'. $this->route['controller'].'Controller';
+            if ($this->route['module']) {
+                $controller = WEB ."\\modules\\{$this->route['module']}\\controllers\\{$this->route['controller']}Controller";
+            } else {
+                $controller = WEB .'\\controllers\\'. $this->route['controller'].'Controller';
+            }
+
 
             if (class_exists($controller)){
                 $cObg = new $controller ($this->regestry);
@@ -103,16 +111,19 @@ class Route
                 if (method_exists($cObg, $action)){
                     $cObg->$action();
                 }else{
+                    //            TODO Вывод ошибки
                     http_response_code(404);
                     echo '404 error <br>';
                     echo "Метод <b>$controller::$action</b> не найден";
                 }
             }else{
+                //            TODO Вывод ошибки
                 http_response_code(404);
                 echo '404 error <br>';
                 echo "Контроллер <b>$controller</b> не найден";
             }
         }else{
+            //            TODO Вывод ошибки
             http_response_code(404);
             echo '404';
         }
