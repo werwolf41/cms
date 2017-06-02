@@ -3,11 +3,12 @@
 namespace app\models;
 
 
-use core\lib\Model;
+use core\lib\BaseModel;
 
-class Home extends Model
+class Home extends BaseModel
 {
     /**
+     * table name
      * @var string
      */
     protected $table = 'departament';

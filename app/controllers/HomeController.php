@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Home;
+use core\helpers\Debugg;
 
 class HomeController extends App
 {
@@ -10,10 +11,11 @@ class HomeController extends App
 
     public function indexAction()
     {
-        $model = new Home();
-        $departaments = $model->findOne(2);
+//        $model = new Home();
+        $departaments = Home::all();
         $title = 'Home controller, test function';
         $this->view('index', compact('title', 'departaments'));
+
     }
 
     public function testAction()

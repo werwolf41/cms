@@ -2,7 +2,8 @@
     "name": "krasn/cms",
     "require": {
         "fxp/composer-asset-plugin": "^1.3",
-        "bower-asset/bootstrap": "^3.3"
+        "bower-asset/bootstrap": "^3.3",
+        "erdiko/eloquent": "^1.0"
     },
     "autoload":{
         "psr-4":{
