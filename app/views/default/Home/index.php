@@ -5,7 +5,7 @@
     <ul class="list-group">
     <?php foreach ($departaments as $departament) : ?>
 
-            <li class="list-group-item"><?= $departament['label']?></li>
+            <li class="list-group-item"><?= $departament->label?></li>
 
 
     <?php endforeach; ?>
