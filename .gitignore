@@ -1,4 +1,4 @@
 .idea/
-vendor/
-web/assets
 !/vendor/core/
+/vendor/
+/web/assets/
