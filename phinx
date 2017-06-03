@@ -23,5 +23,6 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-$app = require 'vendor/robmorgan/phinx/app/phinx.php';
+
+$app = require __DIR__ . '/vendor/robmorgan/phinx/app/phinx.php';
 $app->run();

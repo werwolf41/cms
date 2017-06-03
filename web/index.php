@@ -20,15 +20,16 @@ require_once __DIR__ . "/../vendor/autoload.php";
 //DB
 $capsule = new Capsule();
 $dbConfig = require_once CONFIG .'/db.php';
+
 $capsule->addConnection([
-    'driver'    => $dbConfig['driver'],
-    'host'      => $dbConfig['host'],
-    'database'  => $dbConfig['database'],
-    'username'  => $dbConfig['username'],
-    'password'  => $dbConfig['password'],
-    'charset'   => $dbConfig['charset'],
-    'collation' => $dbConfig['collation'],
-    'prefix'    => $dbConfig['prefix']
+    'driver'    => $dbConfig['environments'][$dbConfig['environments']['default_database']]['adapter'],
+    'host'      => $dbConfig['environments'][$dbConfig['environments']['default_database']]['host'],
+    'database'  => $dbConfig['environments'][$dbConfig['environments']['default_database']]['name'],
+    'username'  => $dbConfig['environments'][$dbConfig['environments']['default_database']]['user'],
+    'password'  => $dbConfig['environments'][$dbConfig['environments']['default_database']]['pass'],
+    'charset'   => $dbConfig['environments'][$dbConfig['environments']['default_database']]['charset'],
+    'collation' => $dbConfig['environments'][$dbConfig['environments']['default_database']]['collation'],
+    'prefix'    => $dbConfig['environments'][$dbConfig['environments']['default_database']]['prefix']
 ]);
 $capsule->bootEloquent();
 
