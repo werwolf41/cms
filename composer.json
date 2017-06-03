@@ -3,7 +3,9 @@
     "require": {
         "fxp/composer-asset-plugin": "^1.3",
         "bower-asset/bootstrap": "^3.3",
-        "erdiko/eloquent": "^1.0"
+        "erdiko/eloquent": "^1.0",
+        "nextras/migrations": "^3.0",
+        "nextras/dbal": "^2.1"
     },
     "autoload":{
         "psr-4":{
