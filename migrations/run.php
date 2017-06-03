@@ -5,21 +5,28 @@ use Nextras\Migrations\Drivers;
 use Nextras\Migrations\Extensions;
 
 require __DIR__ . '/../vendor/autoload.php';
+define('ROOT_FOLDER', dirname(__DIR__));
+define('CONFIG', ROOT_FOLDER . '/config');
 
+$dbConfig = require_once CONFIG .'/db.php';
 
-$conn = new Nextras\Dbal\Connection(...);
-// or   new Nette\Database\Connection(...);
-// or   new Doctrine\Dbal\Connection(...);
-// or   new DibiConnection(...);
+$conn = new Nextras\Dbal\Connection([
+    'driver'    => $dbConfig['driver'],
+    'host'      => $dbConfig['host'],
+    'database'  => $dbConfig['database'],
+    'username'  => $dbConfig['username'],
+    'password'  => $dbConfig['password'],
+    'charset'   => $dbConfig['charset'],
+    'collation' => $dbConfig['collation'],
+    'prefix'    => $dbConfig['prefix']
+]);
+
 
 
 $dbal = new Bridges\NextrasDbal\NextrasAdapter($conn);
-// or   new Bridges\NetteDatabase\NetteAdapter($conn);
-// or   new Bridges\DoctrineDbal\DoctrineAdapter($conn);
-// or   new Bridges\Dibi\DibiAdapter($conn);
 
-$driver = new Drivers\PgSqlDriver($dbal);
-// or     new Drivers\MySqlDriver($dbal);
+
+$driver = new Drivers\MySqlDriver($dbal);
 
 $controller = new Controllers\HttpController($driver);
 // or         new Controllers\ConsoleController($driver);
