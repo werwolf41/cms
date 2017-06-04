@@ -3,7 +3,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-use core\Route;
+use vendor\core\Route;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 define('ROOT_FOLDER', dirname(__DIR__));
@@ -11,10 +11,18 @@ define('APP',  ROOT_FOLDER. '/app');
 define('CONFIG', ROOT_FOLDER . '/config');
 
 
-$url = $_SERVER['REQUEST_URI'];
+$url = rtrim($_SERVER['REQUEST_URI'], '/');
 
 //autoload
 require_once __DIR__ . "/../vendor/autoload.php";
+
+spl_autoload_register(function ($class)
+    {
+        $file = ROOT_FOLDER .'/'.str_replace('\\', '/', $class).'.php';
+        if (file_exists($file)) {
+            require_once $file;
+        }
+    });
 
 
 //DB

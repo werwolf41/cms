@@ -1,10 +1,10 @@
 <?php
 
 
-namespace core\lib;
+namespace vendor\core\lib;
 
 
-use core\Route;
+use vendor\core\Route;
 
 class View
 {
@@ -39,9 +39,15 @@ class View
     public function render($view, $data=[])
     {
         $route = Route::getRote();
-        $template = APP."/views/{$this->templateDir}/{$route['controller']}/{$view}.php";
-        $layout = APP . "/views/{$this->templateDir}/{$this->layout}.php";
-
+        if (isset($route['module'])){
+            $template = APP."/views/{$route['module']}/{$this->templateDir}/{$route['controller']}/{$view}.php"; 
+            $layout = APP . "/views/{$route['module']}/{$this->templateDir}/{$this->layout}.php";
+            if (!file_exists($layout))  $layout = APP . "/views/{$this->templateDir}/{$this->layout}.php";
+        } else {
+            $template = APP."/views/{$this->templateDir}/{$route['controller']}/{$view}.php";
+            $layout = APP . "/views/{$this->templateDir}/{$this->layout}.php";
+        }
+      
         if (file_exists($template) && file_exists($layout)){
             extract($data);
             ob_start();

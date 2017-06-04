@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\models\Home;
-use core\helpers\Debugg;
 
 class HomeController extends App
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace core\helpers;
+namespace vendor\core\helpers;
 
 
 class Debugg

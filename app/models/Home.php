@@ -3,7 +3,7 @@
 namespace app\models;
 
 
-use core\lib\BaseModel;
+use vendor\core\lib\BaseModel;
 
 class Home extends BaseModel
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace core\lib;
+namespace vendor\core\lib;
 
 abstract Class Controller
 {
