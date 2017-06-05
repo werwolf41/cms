@@ -5,6 +5,7 @@ ini_set('display_startup_errors', 1);
 
 use vendor\core\Route;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use vendor\core\Registry;
 
 define('ROOT_FOLDER', dirname(__DIR__));
 define('APP',  ROOT_FOLDER. '/app');
@@ -41,9 +42,11 @@ $capsule->addConnection([
 ]);
 $capsule->bootEloquent();
 
+//Registry
+$app = Registry::instance();
 
 
-//route
+//Route
 $routes = require_once CONFIG . '/routes.php';
 if ($routes){
     foreach ($routes as $regexp => $route){
