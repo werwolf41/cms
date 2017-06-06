@@ -2,3 +2,4 @@
 /web/assets/
 /vendor/
 !/vendor/core/
+/cache/
