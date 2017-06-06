@@ -11,7 +11,13 @@ class HomeController extends App
     public function indexAction()
     {
 //        $model = new Home();
-        $departaments = Home::all();
+        $departaments = \vendor\core\App::$app->cache->getCache('departaments', 'all');
+        if(!$departaments){
+            $departaments = Home::all();
+            \vendor\core\App::$app->cache->setCache('departaments', 'all', $departaments, 3600*24*10);
+        }
+     
+
         $title = 'Home controller, test function';
         $this->view('index', compact('title', 'departaments'));
 

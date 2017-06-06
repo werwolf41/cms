@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 
 use vendor\core\Route;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use vendor\core\Registry;
+use vendor\core\App;
 
 define('ROOT_FOLDER', dirname(__DIR__));
 define('APP',  ROOT_FOLDER. '/app');
@@ -41,10 +41,7 @@ $capsule->addConnection([
     'prefix'    => $dbConfig['environments'][$dbConfig['environments']['default_database']]['prefix']
 ]);
 $capsule->bootEloquent();
-
-//Registry
-$app = Registry::instance();
-
+new App();
 
 //Route
 $routes = require_once CONFIG . '/routes.php';
