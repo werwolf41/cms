@@ -4,7 +4,8 @@
         "fxp/composer-asset-plugin": "^1.3",
         "bower-asset/bootstrap": "^3.3",
         "erdiko/eloquent": "^1.0",
-        "robmorgan/phinx": "^0.8.0"
+        "robmorgan/phinx": "^0.8.0",
+        "duncan3dc/swiftmailer": "^1.5"
     },
     "autoload":{
         "psr-4":{

@@ -23,7 +23,7 @@ class Registry
         $config =  require CONFIG . '/config.php';
         foreach ($config['components'] as $name => $component) {
             if (is_array($component)){
-                self::$objects[$name] = new $component['class'];
+                self::$objects[$name] = new $component['class']($component['config']);
             } else {
                 self::$objects[$name] = new $component;
             }

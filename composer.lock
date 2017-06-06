@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f65cbeddcdfde4d94bd6eedf81a4b94",
+    "content-hash": "d5a4faec3e8e8053f7ae9bfcd0ab69d2",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -152,6 +152,110 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "duncan3dc/blade",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/duncan3dc/blade.git",
+                "reference": "975960cd7ca85a4dad1caa07c2f4945ea757a85f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/duncan3dc/blade/zipball/975960cd7ca85a4dad1caa07c2f4945ea757a85f",
+                "reference": "975960cd7ca85a4dad1caa07c2f4945ea757a85f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": ">=5.1,<5.5",
+                "illuminate/events": ">=5.1,<5.5",
+                "illuminate/view": ">=5.1,<5.5",
+                "php": "^5.6|^7.0"
+            },
+            "require-dev": {
+                "duncan3dc/object-intruder": "^0.1.0",
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "^5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "duncan3dc\\Laravel\\": "src/",
+                    "duncan3dc\\LaravelTests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Duncan",
+                    "email": "git@duncanc.co.uk",
+                    "homepage": "https://github.com/duncan3dc",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Use Laravel Blade templates without the full Laravel framework",
+            "homepage": "https://github.com/duncan3dc/blade",
+            "keywords": [
+                "laravel",
+                "template",
+                "templating",
+                "views"
+            ],
+            "time": "2017-01-28T11:45:17+00:00"
+        },
+        {
+            "name": "duncan3dc/swiftmailer",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/duncan3dc/swiftmailer.git",
+                "reference": "a85cc93651a051ce41a24eb6c7bf07aba7994a4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/duncan3dc/swiftmailer/zipball/a85cc93651a051ce41a24eb6c7bf07aba7994a4e",
+                "reference": "a85cc93651a051ce41a24eb6c7bf07aba7994a4e",
+                "shasum": ""
+            },
+            "require": {
+                "duncan3dc/blade": "^2.2|^3.0",
+                "php": ">=5.6",
+                "swiftmailer/swiftmailer": "^5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "duncan3dc\\SwiftMailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Duncan",
+                    "email": "git@duncanc.co.uk",
+                    "homepage": "https://github.com/duncan3dc",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple wrapper around swiftmailer",
+            "homepage": "https://github.com/duncan3dc/swiftmailer",
+            "keywords": [
+                "Simple",
+                "email",
+                "mailer",
+                "swiftmailer"
+            ],
+            "time": "2016-01-30T11:07:24+00:00"
         },
         {
             "name": "erdiko/core",
@@ -493,6 +597,101 @@
             "time": "2017-04-11T22:53:18+00:00"
         },
         {
+            "name": "illuminate/events",
+            "version": "v5.4.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/events.git",
+                "reference": "5a50ce08fa9efaf9213a720ee7c5c2c73aa071bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/5a50ce08fa9efaf9213a720ee7c5c2c73aa071bf",
+                "reference": "5a50ce08fa9efaf9213a720ee7c5c2c73aa071bf",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.4.*",
+                "illuminate/contracts": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Events\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Events package.",
+            "homepage": "https://laravel.com",
+            "time": "2017-04-09T00:57:11+00:00"
+        },
+        {
+            "name": "illuminate/filesystem",
+            "version": "v5.4.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/filesystem.git",
+                "reference": "7f656e3421b94d759627e891567380b50586f045"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/7f656e3421b94d759627e891567380b50586f045",
+                "reference": "7f656e3421b94d759627e891567380b50586f045",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "php": ">=5.6.4",
+                "symfony/finder": "~3.2"
+            },
+            "suggest": {
+                "league/flysystem": "Required to use the Flysystem local and FTP drivers (~1.0).",
+                "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
+                "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Filesystem\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Filesystem package.",
+            "homepage": "https://laravel.com",
+            "time": "2017-04-07T19:38:05+00:00"
+        },
+        {
             "name": "illuminate/support",
             "version": "v5.4.19",
             "source": {
@@ -548,6 +747,54 @@
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
             "time": "2017-04-09T14:34:57+00:00"
+        },
+        {
+            "name": "illuminate/view",
+            "version": "v5.4.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/view.git",
+                "reference": "f56446ee98479b9891d78b388bb015e45ff58bc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/f56446ee98479b9891d78b388bb015e45ff58bc7",
+                "reference": "f56446ee98479b9891d78b388bb015e45ff58bc7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.4.*",
+                "illuminate/contracts": "5.4.*",
+                "illuminate/events": "5.4.*",
+                "illuminate/filesystem": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "php": ">=5.6.4",
+                "symfony/debug": "~3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\View\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate View package.",
+            "homepage": "https://laravel.com",
+            "time": "2017-04-09T14:27:27+00:00"
         },
         {
             "name": "mustache/mustache",
@@ -810,6 +1057,60 @@
             "time": "2017-02-28T18:34:31+00:00"
         },
         {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
+                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1",
+                "symfony/phpunit-bridge": "~3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
+            "time": "2017-05-01T15:54:03+00:00"
+        },
+        {
             "name": "symfony/config",
             "version": "v3.3.0",
             "source": {
@@ -1041,6 +1342,55 @@
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
             "time": "2017-05-28T14:08:56+00:00"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/baea7f66d30854ad32988c11a09d7ffd485810c4",
+                "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Finder\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-06-01T21:01:25+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

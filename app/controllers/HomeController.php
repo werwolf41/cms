@@ -16,8 +16,12 @@ class HomeController extends App
             $departaments = Home::all();
             \vendor\core\App::$app->cache->setCache('departaments', 'all', $departaments, 3600*24*10);
         }
-     
 
+        $mailer =  \vendor\core\App::$app->mailer;
+        $mailer->setSubject("Test Email");
+        $mailer->setRecipient(["werwolf41@gmail.com" => "Your Name"]);
+        $mailer->addContent("Hello");
+        $mailer->send();
         $title = 'Home controller, test function';
         $this->view('index', compact('title', 'departaments'));
 
